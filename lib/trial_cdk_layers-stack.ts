@@ -1,7 +1,8 @@
 import {RemovalPolicy, Stack, StackProps} from "aws-cdk-lib";
-import {LayerVersion, Code} from "aws-cdk-lib/aws-lambda";
+import {Code, LayerVersion} from "aws-cdk-lib/aws-lambda";
 import {Construct} from "constructs";
 import path from "path";
+import {PythonLayerVersion} from "@aws-cdk/aws-lambda-python-alpha";
 
 export class TrialCdkLayersStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -14,10 +15,16 @@ export class TrialCdkLayersStack extends Stack {
     //   visibilityTimeout: cdk.Duration.seconds(300)
     // });
 
-    const layer = new LayerVersion(this, "TestLayer", {
+    new LayerVersion(this, "TestLayer", {
       layerVersionName: "TrialCdkLayerVersion",
       removalPolicy: RemovalPolicy.RETAIN,
       code: Code.fromAsset(path.join(__dirname, "../src"))
+    });
+
+    new PythonLayerVersion(this, "TestPythonLayer", {
+      entry: "../aaa",
+      layerVersionName: "TrialCdkPythonLayerVersion",
+      removalPolicy: RemovalPolicy.RETAIN
     });
   }
 }
