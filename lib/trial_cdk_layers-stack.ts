@@ -22,7 +22,7 @@ export class TrialCdkLayersStack extends Stack {
     });
 
     new PythonLayerVersion(this, "TestPythonLayer", {
-      entry: "aaa",
+      entry: "aaa/python",
       layerVersionName: "TrialCdkPythonLayerVersion",
       compatibleRuntimes: [Runtime.PYTHON_3_12],
       compatibleArchitectures: [Architecture.ARM_64],
