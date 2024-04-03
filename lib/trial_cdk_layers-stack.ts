@@ -1,5 +1,5 @@
 import {RemovalPolicy, Stack, StackProps} from "aws-cdk-lib";
-import {Code, LayerVersion, Runtime} from "aws-cdk-lib/aws-lambda";
+import {Code, LayerVersion, Runtime, Architecture} from "aws-cdk-lib/aws-lambda";
 import {Construct} from "constructs";
 import path from "path";
 import {PythonLayerVersion} from "@aws-cdk/aws-lambda-python-alpha";
@@ -25,6 +25,7 @@ export class TrialCdkLayersStack extends Stack {
       entry: "../aaa",
       layerVersionName: "TrialCdkPythonLayerVersion",
       compatibleRuntimes: [Runtime.PYTHON_3_12],
+      compatibleArchitectures: [Architecture.ARM_64],
       removalPolicy: RemovalPolicy.RETAIN
     });
   }
