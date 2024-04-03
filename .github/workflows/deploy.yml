@@ -22,6 +22,6 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.12.1
-      - run: pip install zstd==1.4.9.1 -t src/python
+      - run: pip install psycopg2-binary==2.9.5 -t src/python
       - run: npm install
       - run: npx cdk deploy
