@@ -19,5 +19,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.0.0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12.1
+      - run: pip install zstd==1.4.9.1 -t src/python
       - run: npm install
       - run: npx cdk deploy
